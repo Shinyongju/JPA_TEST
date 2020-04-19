@@ -15,7 +15,6 @@ public class LoginDaoImpl implements LoginDao {
 	@Autowired
 	Connection conn;
 
-		
 	@Override
 	public int findUser(String id, String password) {
 		EntityManager em = conn.getConnection();

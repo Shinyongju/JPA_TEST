@@ -18,5 +18,10 @@
 	<input type="submit" value="로그인">
 </form>
 
+<a href ="movereguser">회원가입</a><br>
+<a href ="movefindpassword">비밀번호 찾기</a>
+
+
+
 </body>
 </html>
