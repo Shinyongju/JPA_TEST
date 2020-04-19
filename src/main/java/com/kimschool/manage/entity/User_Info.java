@@ -3,14 +3,20 @@ package com.kimschool.manage.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="user_info")
-@NamedQuery(
-        name = "User_Info.findBypassword",
-        query = "select u from User_Info u where u.password = :password and u.id = :id")
+@NamedQueries({
+	@NamedQuery(
+	        name = "User_Info.findBypassword",
+	        query = "select u from User_Info u where u.password = :password and u.id = :id"),
+	@NamedQuery(
+	        name = "User_Info.findPassword",
+	        query = "select u from User_Info u where u.email = :email and u.id = :id")
+		})
 public class User_Info {
 	
 	@Id

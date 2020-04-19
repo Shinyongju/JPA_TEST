@@ -3,21 +3,19 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-	<title>회원등록</title>
+	<title>비밀번호 찾기</title>
 </head>
 <body>
 <h1>
-	회원가입
+	비밀번호 찾기
 </h1>
 
-<form action="reguser">
+<form action="findpassword">
 	ID : <br>
 	<input type="text" name="id" required="required"><br>
-	PASSWORD : <br>
-	<input type="password" name="password" required="required"><br>
 	EMAIL : <br>
 	<input type="text" name="email1" required="required">@<input type="text" name="email2" required="required"><br><br>
-	<input type="submit" value="회원가입">
+	<input type="submit" value="비밀번호 찾기">
 </form>
 
 <a href ="/manage">홈으로</a>

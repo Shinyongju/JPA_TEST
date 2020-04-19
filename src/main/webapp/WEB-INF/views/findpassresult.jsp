@@ -3,13 +3,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-	<title>Result</title>
+	<title>비밀번호 검색결과</title>
 </head>
 <body>
 
 <h1>결과페이지</h1>
 
-User_Info 테이블로부터 취득한 값은 : ${count }건 입니다.
+당신의 비밀번호는  ${result } 입니다.
 
 <br><br><a href ="/manage">홈으로</a>
 
