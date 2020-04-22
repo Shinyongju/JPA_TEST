@@ -18,14 +18,23 @@ public class FindPasswordDaoImpl implements FindPasswordDao{
 	@Override
 	public String findUserInfo(String id, String email) {
 		EntityManager em = conn.getConnection();
-		List<User_Info> result = em.createNamedQuery("User_Info.findPassword", User_Info.class).
+		
+//		List<User_Info> resultA = em.createNamedQuery("User_Info.findPassword", User_Info.class).
+//				setParameter("email", email).
+//				setParameter("id", id).
+//				getResultList();
+//		
+//		String resultSet = resultA.toString();
+//		
+//		return resultSet;
+		
+		String resultB = em.createNamedQuery("User_Info.findPassword", User_Info.class).
 				setParameter("email", email).
 				setParameter("id", id).
-				getResultList();
+				getSingleResult().getPassword();
 		
-		String resultSet = result.toString();
+		return resultB;
 		
-		return resultSet;
 	}
 
 }
