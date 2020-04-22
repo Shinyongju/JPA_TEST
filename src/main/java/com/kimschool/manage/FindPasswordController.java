@@ -36,22 +36,12 @@ public class FindPasswordController {
 		ModelAndView mv = new ModelAndView();
 		
 		String result = findPasswordService.findUserInfo(id, email1, email2);
-		String first = result.substring(0, 1);
-		String last = result.substring(result.length()-1, result.length());
-		String viewPass = first+"..."+last;
 		
-//		String[] resultSet = result.split(",");
-//		int checkCount = resultSet[2].indexOf('='); 
-//		String setPass = resultSet[2].substring(checkCount+1);
-//		String first = setPass.substring(0, 1);
-//		String last = setPass.substring(setPass.length()-1, setPass.length());
-//		String viewPass = first+"..."+last;
-		
-		if(result == "") {
+		if(result.length() == 0) {
 			mv.setViewName("redirect:/findpassword");
 		}else {
 			mv.setViewName("findpassresult");
-			mv.addObject("result", viewPass);
+			mv.addObject("result", result);
 		}
 		return mv;
 		

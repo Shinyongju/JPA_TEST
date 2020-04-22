@@ -9,7 +9,7 @@
 
 <h1>결과페이지</h1>
 
-당신의 비밀번호는  ${result } 입니다.
+ ${result }
 
 <br><br><a href ="/manage">홈으로</a>
 
