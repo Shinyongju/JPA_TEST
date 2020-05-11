@@ -15,14 +15,13 @@ public class FindPasswordServiceImpl implements FindPasswordService {
 	FindPasswordDao dao;
 	
 	@Override
-	public String findUserInfo(String id, String email1, String email2) {
+	public String findUserInfo(String id, String name) {
 		
 		User_Info userinfo = new User_Info();
-		userinfo.setId(id);
-		String email = email1+"@"+email2;
-		userinfo.setEmail(email);
+		userinfo.setU_no(id);
+		userinfo.setName(name);
 		
-		String result = dao.findUserInfo(id,email);
+		String result = dao.findUserInfo(id,name);
 		return result;
 	}
 

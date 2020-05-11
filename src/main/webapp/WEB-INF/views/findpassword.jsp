@@ -13,8 +13,8 @@
 <form action="findpassword">
 	ID : <br>
 	<input type="text" name="id" required="required"><br>
-	EMAIL : <br>
-	<input type="text" name="email1" required="required">@<input type="text" name="email2" required="required"><br><br>
+	NAME : <br>
+	<input type="text" name="name" required="required"><br><br>
 	<input type="submit" value="비밀번호 찾기">
 </form>
 

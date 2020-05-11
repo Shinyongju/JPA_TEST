@@ -18,9 +18,20 @@
 	<input type="submit" value="로그인">
 </form>
 
+<h1>
+	근무시간 확인
+</h1>
+
+<form action="Wbscheck">
+	ID : <br>
+	<input type="text" name="id"><br>
+	PASSWORD : <br>
+	<input type="password" name="password"><br><br>
+	<input type="submit" value="확인">
+</form>
+
 <a href ="movereguser">회원가입</a><br>
 <a href ="movefindpassword">비밀번호 찾기</a>
-
 
 
 </body>

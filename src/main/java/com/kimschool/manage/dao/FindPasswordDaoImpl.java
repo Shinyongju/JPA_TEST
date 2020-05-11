@@ -16,11 +16,11 @@ public class FindPasswordDaoImpl implements FindPasswordDao{
 	Connection conn;
 	
 	@Override
-	public String findUserInfo(String id, String email) {
+	public String findUserInfo(String id, String name) {
 		EntityManager em = conn.getConnection();
 		
 		List<User_Info> resultA = em.createNamedQuery("User_Info.findPassword", User_Info.class).
-				setParameter("email", email).
+				setParameter("name", name).
 				setParameter("id", id).
 				getResultList();
 		
@@ -42,13 +42,6 @@ public class FindPasswordDaoImpl implements FindPasswordDao{
 		}
 		
 		return resultSet;
-		
-//		String resultB = em.createNamedQuery("User_Info.findPassword", User_Info.class).
-//				setParameter("email", email).
-//				setParameter("id", id).
-//				getSingleResult().getPassword();
-//		
-//		return resultB;
 		
 	}
 

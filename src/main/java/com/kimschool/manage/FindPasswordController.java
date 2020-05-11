@@ -30,12 +30,12 @@ public class FindPasswordController {
 	
 	
 	@RequestMapping("/findpassword")
-	public ModelAndView findpassword(String id, String email1, String email2) {
+	public ModelAndView findpassword(String id, String name) {
 		// 성공 - home , ${msg} 회원가입완료
 		// 실패 - reguser redirect, ${msg} 내용확인
 		ModelAndView mv = new ModelAndView();
 		
-		String result = findPasswordService.findUserInfo(id, email1, email2);
+		String result = findPasswordService.findUserInfo(id, name);
 		
 		if(result.length() == 0) {
 			mv.setViewName("redirect:/findpassword");
@@ -44,6 +44,6 @@ public class FindPasswordController {
 			mv.addObject("result", result);
 		}
 		return mv;
-		
 	}
+	
 }

@@ -15,8 +15,6 @@
 	<input type="text" name="id" required="required"><br>
 	PASSWORD : <br>
 	<input type="password" name="password" required="required"><br>
-	EMAIL : <br>
-	<input type="text" name="email1" required="required">@<input type="text" name="email2" required="required"><br><br>
 	<input type="submit" value="회원가입">
 </form>
 

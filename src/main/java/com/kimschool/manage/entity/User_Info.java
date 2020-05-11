@@ -10,113 +10,141 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user_info")
 @NamedQueries({
+	// 조회
 	@NamedQuery(
 	        name = "User_Info.findBypassword",
-	        query = "select u from User_Info u where u.password = :password and u.id = :id"),
+	        query = "select u from User_Info u where u.password = :password and u.u_no = :id"),
+	// 비밀번호 찾기
 	@NamedQuery(
 	        name = "User_Info.findPassword",
-	        query = "select u from User_Info u where u.email = :email and u.id = :id")
+	        query = "select u from User_Info u where u.name = :name and u.u_no = :id")
 		})
 public class User_Info {
 	
-	@Id
-		private int no;
-	   private String id;
-	   private String password;
-	   @Column(insertable = false)
-	   private String auth1;
-	   @Column(insertable = false)
-	   private String status;
-	   @Column(insertable = false)
-	   private String reg_date;
-	   private String email;
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-	/**
-	 * @return the no
-	 */
+   @Id
+   private int no;
+   private String u_no;
+   private String password;
+   @Column(insertable = false)
+   private String name;
+   @Column(insertable = false)
+   private String gender;
+   @Column(insertable = false)
+   private String address;
+   @Column(insertable = false)
+   private String mobile_number;
+   @Column(insertable = false)
+   private String birth_day;
+   @Column(insertable = false)
+   private String hire_date;
+   @Column(insertable = false)
+   private String reg_date;
+   @Column(insertable = false)
+   private String upd_date;
+   @Column(insertable = false)
+   private String upd_user;
+	
 	public int getNo() {
 		return no;
 	}
-	/**
-	 * @param no the no to set
-	 */
+	
 	public void setNo(int no) {
 		this.no = no;
 	}
-	/**
-	 * @return the password
-	 */
+	
+	public String getU_no() {
+		return u_no;
+	}
+	
+	public void setU_no(String u_no) {
+		this.u_no = u_no;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
-	/**
-	 * @param password the password to set
-	 */
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	/**
-	 * @return the auth1
-	 */
-	public String getAuth1() {
-		return auth1;
+	
+	public String getName() {
+		return name;
 	}
-	/**
-	 * @param auth1 the auth1 to set
-	 */
-	public void setAuth1(String auth1) {
-		this.auth1 = auth1;
+	
+	public void setName(String name) {
+		this.name = name;
 	}
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
+	
+	public String getGender() {
+		return gender;
 	}
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
+	
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	/**
-	 * @return the reg_date
-	 */
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getMobile_number() {
+		return mobile_number;
+	}
+	
+	public void setMobile_number(String mobile_number) {
+		this.mobile_number = mobile_number;
+	}
+	
+	public String getBirth_day() {
+		return birth_day;
+	}
+	
+	public void setBirth_day(String birth_day) {
+		this.birth_day = birth_day;
+	}
+	
+	public String getHire_date() {
+		return hire_date;
+	}
+	
+	public void setHire_date(String hire_date) {
+		this.hire_date = hire_date;
+	}
+	
 	public String getReg_date() {
 		return reg_date;
 	}
-	/**
-	 * @param reg_date the reg_date to set
-	 */
+	
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
+	
+	public String getUpd_date() {
+		return upd_date;
 	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
+	
+	public void setUpd_date(String upd_date) {
+		this.upd_date = upd_date;
 	}
+	
+	public String getUpd_user() {
+		return upd_user;
+	}
+	
+	public void setUpd_user(String upd_user) {
+		this.upd_user = upd_user;
+	}
+
 	@Override
 	public String toString() {
-		return "User_info [id=" + id + ", no=" + no + ", password=" + password + ", auth1=" + auth1 + ", status="
-				+ status + ", reg_date=" + reg_date + ", email=" + email + "]";
+		return "User_info [no=" + no + ", id=" + u_no + ", password=" + password + ", name=" + name + ", gender="
+				+ gender + ", address=" + address + ", mobile_number=" + mobile_number + ", birth_day=" + birth_day + ", hire_date="
+				+ hire_date + ", reg_date=" + reg_date + ", upd_date=" + upd_date + ", upd_user=" + upd_user + "]";
 	}
+	
 }

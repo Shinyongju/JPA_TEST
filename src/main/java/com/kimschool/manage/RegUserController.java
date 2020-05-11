@@ -27,14 +27,13 @@ public class RegUserController {
 		return "reguser";
 	}
 	
-	
 	@RequestMapping("/reguser")
-	public ModelAndView reguser(String id, String password, String email1, String email2) {
+	public ModelAndView reguser(String id, String password) {
 		// 성공 - home , ${msg} 회원가입완료
 		// 실패 - reguser redirect, ${msg} 내용확인
 		ModelAndView mv = new ModelAndView();
 		
-		int result = regUserService.insertUserInfo(id, password, email1, email2);
+		int result = regUserService.insertUserInfo(id, password);
 		
 		if(result == 0) {
 			mv.setViewName("home");

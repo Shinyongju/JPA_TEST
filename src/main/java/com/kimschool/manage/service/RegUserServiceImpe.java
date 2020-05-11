@@ -14,13 +14,11 @@ public class RegUserServiceImpe implements RegUserService {
 	RegUserDao dao;
 	
 	@Override
-	public int insertUserInfo(String id, String password, String email1, String email2) {
+	public int insertUserInfo(String id, String password) {
 		
 		User_Info userinfo = new User_Info();
-		userinfo.setId(id);
+		userinfo.setU_no(id);
 		userinfo.setPassword(password);
-		String email = email1+"@"+email2;
-		userinfo.setEmail(email);
 		
 		int result = dao.insertUserInfo(userinfo);
 		return result;
