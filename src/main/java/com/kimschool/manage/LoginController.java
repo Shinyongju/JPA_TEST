@@ -15,35 +15,35 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	DataSource ds;
-	
+
 	@RequestMapping("login")
-	public ModelAndView login() throws ClassNotFoundException, SQLException { 
-		
+	public ModelAndView login() throws ClassNotFoundException, SQLException {
+
 		Connection conn;
 		PreparedStatement ps = null;
 		ResultSet rs;
-		
+
 		conn = ds.getConnection();
 
 		System.out.println(conn);
-		
+
 		String sql = "select now()";
-		
+
 		ps = conn.prepareStatement(sql);
-		
+
 		rs = ps.executeQuery();
 
 		while (rs.next()) {
 			String time = rs.getString("now()");
 			System.out.println(time);
 		}
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login");
-		
+
 		return mv;
 	}
 

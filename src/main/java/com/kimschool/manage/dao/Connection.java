@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Connection {
-	
+
 	public EntityManager getConnection() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("db");
 		EntityManager em = emf.createEntityManager();

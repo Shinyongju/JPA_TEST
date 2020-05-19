@@ -15,35 +15,34 @@ import com.kimschool.manage.service.LoginService;
  */
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	LoginService loginservice;
 
-	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
-		
+
 		ModelAndView mv = new ModelAndView("home");
 
 		logger.debug("초기처리");
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/logincheck")
 	public ModelAndView logincheck(String id, String password) {
-		
+
 		logger.debug("로그인 체크 처리를 시작합니다.");
-		
+
 		ModelAndView mv = new ModelAndView("result");
-		
+
 		int count = loginservice.checkLogin(id, password);
-		
+
 		mv.addObject("count", count);
-		
+
 		return mv;
 	}
-	
+
 }

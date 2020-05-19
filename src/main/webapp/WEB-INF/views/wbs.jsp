@@ -1,72 +1,85 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
-
 <head>
-	<title>KIM SCHOOL || WBS</title>
+<title>KIMSCHOOL || WBS</title>
 </head>
 <body>
 
-<h3>사원번호 : ${resultA.get(0).u_no}</h3>
-<h3>이름 : ${resultA.get(0).name}</h3>
-<h3>근무일수 : ${resultB.size()}</h3>
-<h3>근무시간 : ${((resultB.get(0).end_time-resultB.get(0).start_time-resultB.get(0).rest_time)+(resultB.get(1).end_time-resultB.get(1).start_time-resultB.get(1).rest_time))/100}</h3>
+	<h1>근태확인</h1>
 
-<table border="1">
-	<tr>
-		<td colspan="3">근무처 : ${resultC.get(0).wp_name}</td>
-		<td>최소 : ${resultC.get(0).min_time}시간 </td>
-		<td>최대 : ${resultC.get(0).max_time}시간 </td>
-		<td colspan="2"></td>
-	</tr>
-   <tr style="background-color: lightblue">
-      <th>일자</th><th>근무형태</th><th>출근시간</th><th>퇴근시간</th><th>휴계시간</th><th>총합시간</th><th>비고</th>
-   </tr>
-   
-   <tr>
-      <td>${resultB.get(0).date}</td>
-      <td>
-      	<c:if test="${resultB.get(0).vacation_type == 0 }">
-	      	출근
-   	  	</c:if>
-      	<c:if test="${resultB.get(0).vacation_type == 1 }">
-	      	휴무
-   	  	</c:if>
-      </td>
-      <td>${resultB.get(0).start_time}</td>
-      <td>${resultB.get(0).end_time}</td>
-      <td>${resultB.get(0).rest_time}</td>
-      <td>
-	      <c:if test="${resultB.get(0).end_time != 0 }">
-	      	${(resultB.get(0).end_time-resultB.get(0).start_time-resultB.get(0).rest_time)/100}
-	   	  </c:if>
-      </td>
-      <td>${resultB.get(0).memo}</td>
-   </tr>
-   <tr>
-      <td>${resultB.get(1).date}</td>
-      <td>
-      	<c:if test="${resultB.get(1).vacation_type == 0 }">
-	      	출근
-   	  	</c:if>
-      	<c:if test="${resultB.get(1).vacation_type == 1 }">
-	      	휴무
-   	  	</c:if>
-      </td>
-      <td>${resultB.get(1).start_time}</td>
-      <td>${resultB.get(1).end_time}</td>
-      <td>${resultB.get(1).rest_time}</td>
-      <td>
-	      <c:if test="${resultB.get(1).end_time != 0 }">
-	      	${(resultB.get(1).end_time-resultB.get(1).start_time-resultB.get(1).rest_time)/100}
-	   	  </c:if>
-      </td>
-      <td>${resultB.get(1).memo}</td>
-   </tr>
-</table>
+	<fieldset style="width: 300px;">
+		<legend> KIMSCHOOL 勤怠管理 </legend>
 
-<br><br><a href ="/manage">홈으로</a>
+		<table border=1>
+			<tr>
+				<th style="background-color: lightblue;">社員名</th>
+				<td>${wbsinfo.name}</td>
+			</tr>
+			<tr>
+				<th style="background-color: lightblue;">社員番号</th>
+				<td>${wbsinfo.no}</td>
+			</tr>
+		</table>
+
+		<br>
+		<table border=1>
+			<tr>
+				<th style="background-color: lightblue;">勤務日合計</th>
+				<td>${wbsinfo.resultlist.size()}日</td>
+			</tr>
+			<tr>
+				<c:set var="sum" value="0" />
+				<c:set var="all_time" value="0" />
+				<c:forEach var="wbsinfoList" items="${wbsinfo.resultlist}">
+					<c:set var="all_time"
+						value="${(wbsinfoList.end_time - wbsinfoList.start_time - wbsinfoList.rest_time)/100}" />
+					<c:set var="sum" value="${sum + all_time}" />
+				</c:forEach>
+				<th style="background-color: lightblue;">勤務時間合計</th>
+				<td><c:out value="${sum}" />時間</td>
+			</tr>
+		</table>
+		<br>
+		<table border=1>
+			<tr>
+				<th style="background-color: lightblue;">最低勤務時間</th>
+				<td>${wbsinfo.min_time}時間</td>
+			</tr>
+			<tr>
+				<th style="background-color: lightblue;">最大勤務時間</th>
+				<td>${wbsinfo.max_time}時間</td>
+			</tr>
+		</table>
+	</fieldset>
+	<br>
+
+	<table border=1>
+		<tr style="background-color: lightblue">
+			<th>日付
+			<th>開始時間</th>
+			<th>終了時間</th>
+			<th>合計時間</th>
+			<th>休日区分</th>
+			<th>メモ</th>
+		</tr>
+		<c:forEach items="${wbsinfo.resultlist}" var="wbsinfoList">
+			<tr>
+				<td>${wbsinfoList.date}</td>
+				<td>${wbsinfoList.start_time}</td>
+				<td>${wbsinfoList.end_time}</td>
+				<td>${(wbsinfoList.end_time - wbsinfoList.start_time - wbsinfoList.rest_time)/100}</td>
+				<td>${wbsinfoList.vacation_type}</td>
+				<td>${wbsinfoList.memo}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<!-- <input type = "button" value = "등록"> -->
+	<br>
+	<a href="/manage">홈으로</a>
 
 </body>
 </html>
