@@ -17,7 +17,7 @@
 		<table border=1>
 			<tr>
 				<th style="background-color: lightblue;">社員名</th>
-				<td>${wbsinfo.name}</td>
+				<td>${wbsinfo.u_name}</td>
 			</tr>
 			<tr>
 				<th style="background-color: lightblue;">社員番号</th>
@@ -29,19 +29,13 @@
 		<table border=1>
 			<tr>
 				<th style="background-color: lightblue;">勤務日合計</th>
-				<td>${wbsinfo.resultlist.size()}日</td>
+				<td>${wbsinfo.dayCount}日</td>
 			</tr>
 			<tr>
-				<c:set var="sum" value="0" />
-				<c:set var="all_time" value="0" />
-				<c:forEach var="wbsinfoList" items="${wbsinfo.resultlist}">
-					<c:set var="all_time"
-						value="${(wbsinfoList.end_time - wbsinfoList.start_time - wbsinfoList.rest_time)/100}" />
-					<c:set var="sum" value="${sum + all_time}" />
-				</c:forEach>
 				<th style="background-color: lightblue;">勤務時間合計</th>
-				<td><c:out value="${sum}" />時間</td>
+				<td>${wbsinfo.totalTime}時間</td>
 			</tr>
+
 		</table>
 		<br>
 		<table border=1>
@@ -66,16 +60,18 @@
 			<th>休日区分</th>
 			<th>メモ</th>
 		</tr>
-		<c:forEach items="${wbsinfo.resultlist}" var="wbsinfoList">
+
+		<c:forEach var="wbs" items="${wbsinfo.wbslist}">
 			<tr>
-				<td>${wbsinfoList.date}</td>
-				<td>${wbsinfoList.start_time}</td>
-				<td>${wbsinfoList.end_time}</td>
-				<td>${(wbsinfoList.end_time - wbsinfoList.start_time - wbsinfoList.rest_time)/100}</td>
-				<td>${wbsinfoList.vacation_type}</td>
-				<td>${wbsinfoList.memo}</td>
+				<td>${wbs.date}</td>
+				<td>${wbs.start_h}時${wbs.start_m}分</td>
+				<td>${wbs.end_h}時${wbs.end_m}分</td>
+				<td>${wbs.total_h}</td>
+				<td>${wbs.vacation_type}</td>
+				<td>${wbs.memo}</td>
 			</tr>
 		</c:forEach>
+
 	</table>
 	<!-- <input type = "button" value = "등록"> -->
 	<br>
@@ -83,3 +79,65 @@
 
 </body>
 </html>
+
+<%-- 		<tr>
+			<c:set var="sum" value="0" />
+			<c:set var="all_time" value="0" />
+			<c:forEach var="wbsinfoList" items="${wbsinfo.resultlist}">
+				<c:set var="all_time"
+					value="${(wbsinfoList.end_time - wbsinfoList.start_time - wbsinfoList.rest_time)/100}" />
+				<c:set var="sum" value="${sum + all_time}" />
+			</c:forEach>
+			<th style="background-color: lightblue;">勤務時間合計</th>
+			<td><c:out value="${String.format('%.2f',sum)}" />時間</td>
+		</tr> --%>
+
+<%-- <c:forEach var="wbs" items="${wbsinfo.resultlist}" varStatus="status">
+			<tr>
+				<td>
+				${wbs.date}
+				<c:if test="${status.count == 1 }">
+			      	(金)
+		   	  	</c:if> 
+				<c:if test="${status.count == 2 }">
+			      	(土)
+		   	  	</c:if> 
+				<c:if test="${status.count == 3 }">
+			      	(日)
+		   	  	</c:if> 
+				<c:if test="${status.count == 4 }">
+			      	(月)
+		   	  	</c:if> 
+				<c:if test="${status.count == 5 }">
+			      	(火)
+		   	  	</c:if> 
+				<c:if test="${status.count == 6 }">
+			      	(水)
+		   	  	</c:if> 
+				<c:if test="${status.count == 7 }">
+			      	(木)
+		   	  	</c:if> 
+				</td>
+				<td>${wbs.start_time.substring(0,2)}時${wbs.start_time.substring(2,4)}分 </td>
+				<td>${wbs.end_time.substring(0,2)}時${wbs.end_time.substring(2,4)}分 </td>
+				<td>${String.format("%.2f",(wbs.end_time - wbs.start_time - wbs.rest_time)/100)}</td>
+				<td>
+				<c:if test="${wbs.vacation_type == 0 }">
+			      	
+		   	  	</c:if> 
+		   	  	<c:if test="${wbs.vacation_type == 1 }">
+			      	오전휴가
+		   	  	</c:if>
+				<c:if test="${wbs.vacation_type == 2 }">
+			      	오휴휴가
+		   	  	</c:if>
+		   	  	<c:if test="${wbs.vacation_type == 3 }">
+			      	종일휴가
+		   	  	</c:if>
+		   	  	<c:if test="${wbs.vacation_type == 4 }">
+			      	조퇴
+		   	  	</c:if>
+				</td>
+				<td>${wbs.memo}</td>
+			</tr>
+		</c:forEach> --%>

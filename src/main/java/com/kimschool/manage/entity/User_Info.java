@@ -10,11 +10,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_info")
 @NamedQueries({
+		@NamedQuery(name = "User_Info.findByu_no", query = "select u from User_Info u where u.u_no = :u_no"),
 		@NamedQuery(name = "User_Info.findByUserInfo", query = "select u from User_Info u where u.u_password = :u_password and u.u_no = :u_no"),
-		// 조회
-		@NamedQuery(name = "User_Info.findBypassword", query = "select u from User_Info u where u.u_password = :password and u.u_no = :id"),
-		// 비밀번호 찾기
-		@NamedQuery(name = "User_Info.findPassword", query = "select u from User_Info u where u.name = :name and u.u_no = :id") })
+//		// 조회
+//		@NamedQuery(name = "User_Info.findBypassword", query = "select u from User_Info u where u.u_password = :password and u.u_no = :id"),
+//		// 비밀번호 찾기
+//		@NamedQuery(name = "User_Info.findPassword", query = "select u from User_Info u where u.name = :name and u.u_no = :id") 
+		})
 public class User_Info {
 
 	@Id

@@ -35,34 +35,34 @@ public class WbsTestController {
 	}
 
 	@RequestMapping("/wbsLoginMove")
-	public ModelAndView wbsLoginMove(String u_no, String u_password) {
+	public ModelAndView wbsLoginMove(String u_no) {
 
-		ModelAndView mv = wbsService.wbsLoginMove(u_no, u_password);
+		ModelAndView mv = wbsService.wbsLoginMove(u_no);
 
 		return mv;
 	}
 
-	private static final Logger logger = LoggerFactory.getLogger(WbsTestController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(WbsTestController.class);
 
-	@RequestMapping("/Wbscheck")
-	public ModelAndView wbscheck(String id, String password) {
-		// 성공 - home , ${msg} 회원가입완료
-		// 실패 - reguser redirect, ${msg} 내용확인
-		ModelAndView mv = new ModelAndView();
-
-		ArrayList<String> resultA = (ArrayList<String>) wbsService.wbsCheckA(id, password);
-		ArrayList<String> resultB = (ArrayList<String>) wbsService.wbsCheckB(id);
-		ArrayList<String> resultC = (ArrayList<String>) wbsService.wbsCheckC(id);
-
-		if (resultA.size() == 0) {
-			mv.setViewName("redirect:/home");
-		} else {
-			mv.setViewName("wbs3");
-			mv.addObject("resultA", resultA);
-			mv.addObject("resultB", resultB);
-			mv.addObject("resultC", resultC);
-		}
-		return mv;
-	}
+//	@RequestMapping("/Wbscheck")
+//	public ModelAndView wbscheck(String id, String password) {
+//		// 성공 - home , ${msg} 회원가입완료
+//		// 실패 - reguser redirect, ${msg} 내용확인
+//		ModelAndView mv = new ModelAndView();
+//
+//		ArrayList<String> resultA = (ArrayList<String>) wbsService.wbsCheckA(id, password);
+//		ArrayList<String> resultB = (ArrayList<String>) wbsService.wbsCheckB(id);
+//		ArrayList<String> resultC = (ArrayList<String>) wbsService.wbsCheckC(id);
+//
+//		if (resultA.size() == 0) {
+//			mv.setViewName("redirect:/home");
+//		} else {
+//			mv.setViewName("wbs3");
+//			mv.addObject("resultA", resultA);
+//			mv.addObject("resultB", resultB);
+//			mv.addObject("resultC", resultC);
+//		}
+//		return mv;
+//	}
 
 }

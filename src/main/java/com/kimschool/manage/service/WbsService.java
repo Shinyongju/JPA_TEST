@@ -8,12 +8,12 @@ public interface WbsService {
 
 	public ModelAndView wbsLoginCheck(String u_no, String u_password);
 
-	public ModelAndView wbsLoginMove(String u_no, String u_password);
+	public ModelAndView wbsLoginMove(String u_no);
 
-	public List wbsCheckA(String id, String password);
-
-	public List wbsCheckB(String id);
-
-	public List wbsCheckC(String id);
+//	public List wbsCheckA(String id, String password);
+//
+//	public List wbsCheckB(String id);
+//
+//	public List wbsCheckC(String id);
 
 }
